@@ -68,3 +68,18 @@ console.log(myString.split(' ').map(ele => {
  // console.log(ele.split(''))
   return ele.split('').reverse().join('')
 }).join(' '));
+let flatArray =[1,4,[5,7,[9,9]]]
+console.log(flatArray.flat(2))
+console.log(flatArray.reduce((ele,curr)=>{
+  if(typeof curr == 'number'){
+ele.push(curr)
+  }else{
+    ele.push(...curr)
+  }
+  return ele;
+
+},[]))
+
+function flatArrayNew(){
+  
+}
