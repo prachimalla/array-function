@@ -70,7 +70,8 @@ console.log(myString.split(' ').map(ele => {
 }).join(' '));
 let flatArray =[1,4,[5,7,[9,9]]]
 console.log(flatArray.flat(2))
-console.log(flatArray.reduce((ele,curr)=>{
+console.log(
+  flatArray.reduce((ele,curr)=>{
   if(typeof curr == 'number'){
 ele.push(curr)
   }else{
@@ -80,6 +81,20 @@ ele.push(curr)
 
 },[]))
 
-function flatArrayNew(){
-  
+function flatArrayNew(input){
+
+  return function newArr(flatArray){
+    
+  return  flatArray.reduce((ele,curr)=>{
+      if(typeof curr == 'number'){
+    ele.push(curr)
+      }else{
+        ele.push(...curr)
+      }
+      return ele;
+    
+    },[])
+  }
+
 }
+console.log(flatArrayNew()(flatArray))
