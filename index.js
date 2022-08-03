@@ -14,7 +14,7 @@ const data = myArray.reduce((acc,current,index) =>{
   console.log(acc,current,index)
   return acc * current;
 },2 );
-console.log(data)
+console.log('data',data)
 
 Array.prototype.MyReduce = function(callBack,ele){
   let returnData = !ele ? this[0]:ele ;
@@ -97,4 +97,36 @@ function flatArrayNew(input){
   }
 
 }
-console.log(flatArrayNew()(flatArray))
+
+// Q: Design a custom json. stringify function !
+
+// Difficulty level : hard
+
+// Task :
+// :- Design a custom json .stringify function which takes a json input and return a string of that json.
+// :- Should take care of nested objects and arrays as well
+// :- empty objects also to be accepted
+
+
+// Example :
+// customJSONString({t1:["t1"],t2:{t3:{t4:"t5"}}})
+// should return
+// '{"t1":["t1"],"t2":{"t3":{"t4":"t5"}}}'
+
+const jsonStr = {t1:["t1"],
+t2:{t3:{t4:"t5"}
+}};
+function customJsonStr(){
+ // for(let i =0;i<)
+ return function newString(jsonStr){
+  for(let ele in jsonStr){
+    console.log(ele,Object.keys(jsonStr[ele]),jsonStr[ele])
+    if(Object.keys(jsonStr[ele])){
+      newString(jsonStr[ele])
+    }
+  }
+ }
+  
+
+}
+console.log(customJsonStr()(jsonStr))
